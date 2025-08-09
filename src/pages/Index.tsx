@@ -7,6 +7,7 @@ import FlashSaleBanner from "@/components/common/FlashSaleBanner";
 import { ProductCard } from "@/components/product/ProductCard";
 import ChatbotWidget from "@/components/chatbot/ChatbotWidget";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -59,8 +60,8 @@ const Index = () => {
               <SearchBar />
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button variant="hero" size="lg" className="hover-scale">Start Shopping</Button>
-              <Button variant="secondary" size="lg" className="hover-scale">Sell on FusionKart</Button>
+              <Button variant="hero" size="lg" className="hover-scale" asChild><Link to="/search">Start Shopping</Link></Button>
+              <Button variant="secondary" size="lg" className="hover-scale" asChild><Link to="/seller">Sell on FusionKart</Link></Button>
             </div>
           </div>
           <div className="relative">
@@ -74,9 +75,9 @@ const Index = () => {
         <h2 className="mb-4 text-2xl font-semibold">Top Categories</h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
           {categories.slice(0,6).map((c) => (
-            <a key={c.join('-')} href={`/search?q=${encodeURIComponent(c[c.length-1])}`} className="rounded-lg border bg-card p-4 text-center hover:shadow-md hover-scale">
+            <Link key={c.join('-')} to={`/search?q=${encodeURIComponent(c[c.length-1])}`} className="rounded-lg border bg-card p-4 text-center hover:shadow-md hover-scale">
               <span className="text-sm font-medium">{c.join(' › ')}</span>
-            </a>
+            </Link>
           ))}
         </div>
       </section>

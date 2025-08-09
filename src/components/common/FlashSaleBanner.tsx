@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const target = () => {
   const now = new Date();
@@ -37,7 +38,7 @@ const FlashSaleBanner = () => {
             <div className="rounded bg-secondary px-3 py-2"><span className="text-lg font-semibold tabular-nums">{minutes.toString().padStart(2, '0')}</span></div>
             <div className="rounded bg-secondary px-3 py-2"><span className="text-lg font-semibold tabular-nums">{seconds.toString().padStart(2, '0')}</span></div>
           </div>
-          <Button variant="hero">Grab Deals</Button>
+          <Button variant="hero" asChild><Link to="/search?q=deals">Grab Deals</Link></Button>
         </div>
       </div>
     </section>
