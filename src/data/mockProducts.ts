@@ -16,15 +16,46 @@ export const categories: string[][] = [
   ["Home", "Kitchen"],
 ];
 
-export const products: Product[] = [
-  { id: 'p1', name: 'Fusion X1 Smartphone 128GB', price: 699, rating: 4.5, reviews: 1892, category: ['Electronics', 'Mobiles'] },
-  { id: 'p2', name: 'Auraluxe Wireless Headphones', price: 129, rating: 4.3, reviews: 876, category: ['Electronics', 'Audio'] },
-  { id: 'p3', name: 'NovaBook Pro 14" Laptop', price: 1199, rating: 4.7, reviews: 512, category: ['Electronics', 'Laptops'] },
-  { id: 'p4', name: 'Stride Runner Men\'s Shoes', price: 89, rating: 4.2, reviews: 144, category: ['Fashion', 'Men', 'Shoes'] },
-  { id: 'p5', name: 'Astra Women\'s Chrono Watch', price: 249, rating: 4.6, reviews: 232, category: ['Fashion', 'Women', 'Watches'] },
-  { id: 'p6', name: 'ChefPro Nonstick Pan Set', price: 79, rating: 4.1, reviews: 98, category: ['Home', 'Kitchen'] },
-  { id: 'p7', name: 'Fusion X1 Pro Smartphone 256GB', price: 899, rating: 4.8, reviews: 2044, category: ['Electronics', 'Mobiles'] },
-  { id: 'p8', name: 'EchoBuds ANC Earbuds', price: 149, rating: 4.4, reviews: 321, category: ['Electronics', 'Audio'] },
-  { id: 'p9', name: 'NovaBook Air 13" Laptop', price: 999, rating: 4.5, reviews: 220, category: ['Electronics', 'Laptops'] },
-  { id: 'p10', name: 'SonicMax Bluetooth Speaker', price: 59, rating: 4.0, reviews: 412, category: ['Electronics', 'Audio'] },
-];
+const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+const categorySlug = (path: string[]) => path.map(slugify).join("-");
+
+// Generate hundreds of products for each leaf category
+const genProducts = (): Product[] => {
+  const out: Product[] = [];
+  const ranges: Record<string, { min: number; max: number }> = {
+    mobiles: { min: 99, max: 1499 },
+    audio: { min: 19, max: 499 },
+    laptops: { min: 399, max: 2999 },
+    shoes: { min: 19, max: 249 },
+    watches: { min: 29, max: 999 },
+    kitchen: { min: 9, max: 299 },
+  };
+
+  const rand = (min: number, max: number) => Math.random() * (max - min) + min;
+
+  for (const path of categories) {
+    const leaf = path[path.length - 1];
+    const leafKey = slugify(leaf);
+    const range = ranges[leafKey] ?? { min: 10, max: 1000 };
+    const baseId = `${slugify(path[0])}-${leafKey}`;
+
+    const count = 200; // hundreds per category
+    for (let i = 1; i <= count; i++) {
+      const price = Math.round(rand(range.min, range.max) * 100) / 100;
+      const rating = Math.round(rand(3.5, 4.9) * 10) / 10;
+      const reviews = Math.floor(rand(25, 5000));
+      out.push({
+        id: `${baseId}-${i}`,
+        name: `${leaf} ${i} — ${path[0]} Collection`,
+        price,
+        rating,
+        reviews,
+        category: [...path],
+      });
+    }
+  }
+  return out;
+};
+
+export const products: Product[] = genProducts();
+

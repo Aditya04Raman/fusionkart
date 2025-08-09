@@ -11,6 +11,7 @@ import Header from "./components/common/Header";
 import SellerDashboard from "./pages/SellerDashboard";
 import Orders from "./pages/Orders";
 import Cart from "./pages/Cart";
+import Category from "./pages/Category";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
   <Route path="/seller" element={<SellerDashboard />} />
   <Route path="/orders" element={<Orders />} />
   <Route path="/cart" element={<Cart />} />
+  <Route path="/category/:slug" element={<Category />} />
   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
   <Route path="*" element={<NotFound />} />
         </Routes>

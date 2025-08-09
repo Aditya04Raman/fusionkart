@@ -26,7 +26,7 @@ const Search = () => {
       <div className="mb-6 text-sm text-muted-foreground">
         Popular categories: {categories.slice(0,4).map((c, i) => (
           <span key={c.join('-')}>
-            <Link className="story-link" to={`/search?q=${encodeURIComponent(c[c.length-1])}`}>{c.join(' › ')}</Link>
+            <Link className="story-link" to={`/category/${c.map(p=>p.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'')).join('-')}`}>{c.join(' › ')}</Link>
             {i < 3 ? ' · ' : ''}
           </span>
         ))}

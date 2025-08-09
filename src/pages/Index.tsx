@@ -75,7 +75,7 @@ const Index = () => {
         <h2 className="mb-4 text-2xl font-semibold">Top Categories</h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
           {categories.slice(0,6).map((c) => (
-            <Link key={c.join('-')} to={`/search?q=${encodeURIComponent(c[c.length-1])}`} className="rounded-lg border bg-card p-4 text-center hover:shadow-md hover-scale">
+            <Link key={c.join('-')} to={`/category/${c.map(p=>p.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'')).join('-')}`} className="rounded-lg border bg-card p-4 text-center hover:shadow-md hover-scale">
               <span className="text-sm font-medium">{c.join(' › ')}</span>
             </Link>
           ))}
