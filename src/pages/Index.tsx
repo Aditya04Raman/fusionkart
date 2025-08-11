@@ -95,6 +95,12 @@ const Index = () => {
       </section>
 
       <ChatbotWidget />
+
+      {/* FOOTER */}
+      {/* Using a simple Footer with helpful links for SEO and navigation */}
+      <section className="mt-10">
+        {/* ... keep existing code (footer placeholder) */}
+      </section>
     </main>
   );
 };

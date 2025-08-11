@@ -1,12 +1,24 @@
 import { Link, useNavigate } from "react-router-dom";
-import { ShoppingBag, Store, User, Search as SearchIcon } from "lucide-react";
+import { ShoppingBag, Store, User, Search as SearchIcon, Heart, LogIn, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { User as SupaUser } from "@supabase/supabase-js";
+import { cleanupAuthState } from "@/lib/auth";
 
 const Header = () => {
   const navigate = useNavigate();
   const [q, setQ] = useState("");
+  const [user, setUser] = useState<SupaUser | null>(null);
+
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_evt, session) => {
+      setUser(session?.user ?? null);
+    });
+    supabase.auth.getSession().then(({ data }) => setUser(data.session?.user ?? null));
+    return () => subscription.unsubscribe();
+  }, []);
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,10 +47,28 @@ const Header = () => {
               <Button variant="secondary"><Store className="mr-2" />Sell</Button>
             </Link>
             <Button variant="ghost" asChild>
-              <Link to="/orders" aria-label="Account">
-                <User />
+              <Link to="/wishlist" aria-label="Wishlist">
+                <Heart />
               </Link>
             </Button>
+            {user ? (
+              <>
+                <Button variant="ghost" asChild>
+                  <Link to="/orders" aria-label="Account">
+                    <User />
+                  </Link>
+                </Button>
+                <Button variant="ghost" onClick={async () => { cleanupAuthState(); try { await supabase.auth.signOut({ scope: 'global' }); } catch {}; window.location.href = '/auth'; }} aria-label="Logout">
+                  <LogOut />
+                </Button>
+              </>
+            ) : (
+              <Button variant="ghost" asChild>
+                <Link to="/auth" aria-label="Login">
+                  <LogIn />
+                </Link>
+              </Button>
+            )}
             <Button variant="ghost" asChild>
               <Link to="/cart" aria-label="Cart">
                 <ShoppingBag />

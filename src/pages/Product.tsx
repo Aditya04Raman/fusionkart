@@ -35,6 +35,7 @@ const Product = () => {
           <div className="mt-6 flex gap-3">
             <Button variant="hero" onClick={() => toast({ title: 'Added to cart', description: prod.name })}>Add to Cart</Button>
             <Button variant="secondary" asChild><Link to={`/cart?buy=${prod.id}`}>Buy Now</Link></Button>
+            <Button variant="outline" asChild><Link to="/wishlist">Save to Wishlist</Link></Button>
           </div>
           <ul className="mt-6 list-disc pl-5 text-sm text-muted-foreground space-y-1">
             <li>Fast, free delivery</li>
