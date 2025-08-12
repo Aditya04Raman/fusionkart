@@ -77,6 +77,13 @@ const Header = () => {
           </nav>
         </div>
 
+        <nav className="hidden md:flex h-10 items-center gap-6 border-t text-sm text-muted-foreground">
+          <Link to="/search?q=deals" className="story-link">Top Deals</Link>
+          <Link to="/search?q=new" className="story-link">New Arrivals</Link>
+          <Link to="/search?q=best" className="story-link">Best Sellers</Link>
+          <Link to="/faq" className="story-link">Help & FAQ</Link>
+        </nav>
+
         <form onSubmit={onSubmit} className="md:hidden pb-3">
           <div className="relative">
             <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />

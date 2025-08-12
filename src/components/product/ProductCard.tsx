@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { productImageUrl } from "@/lib/images";
 
 interface Props {
   id: string;
@@ -16,7 +17,12 @@ export const ProductCard = ({ id, name, price, rating, reviews, badge }: Props) 
     <article className="group rounded-lg border bg-card p-4 shadow-sm hover:shadow-md transition-shadow">
       <Link to={`/product/${id}`} className="block">
         <div className="relative mb-3 aspect-[4/3] w-full overflow-hidden rounded-md bg-[var(--gradient-surface)]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.10),transparent_35%),radial-gradient(circle_at_70%_80%,hsl(var(--accent)/0.16),transparent_40%)] transition-transform duration-300 group-hover:scale-105" />
+          <img
+            src={productImageUrl(id, 'md')}
+            alt={`${name} product image`}
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
         </div>
         <h3 className="line-clamp-2 text-sm font-medium">{name}</h3>
       </Link>
