@@ -20,6 +20,7 @@ import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Policies from "./pages/Policies";
+import ChatbotWidget from "@/components/chatbot/ChatbotWidget";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +50,7 @@ const App = () => (
   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
   <Route path="*" element={<NotFound />} />
         </Routes>
+        <ChatbotWidget />
         <Footer />
         {/* ... keep existing code (router end) */}
       </BrowserRouter>

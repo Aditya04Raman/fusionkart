@@ -5,9 +5,9 @@ import { SearchBar } from "@/components/search/SearchBar";
 import { products, categories } from "@/data/mockProducts";
 import FlashSaleBanner from "@/components/common/FlashSaleBanner";
 import { ProductCard } from "@/components/product/ProductCard";
-import ChatbotWidget from "@/components/chatbot/ChatbotWidget";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -93,8 +93,6 @@ const Index = () => {
           ))}
         </div>
       </section>
-
-      <ChatbotWidget />
 
       {/* FOOTER */}
       {/* Using a simple Footer with helpful links for SEO and navigation */}

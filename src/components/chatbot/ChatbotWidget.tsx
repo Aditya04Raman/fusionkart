@@ -111,9 +111,9 @@ const ChatbotWidget = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="hero" size="lg" className="fixed bottom-6 right-6 shadow-lg">
+        <Button variant="hero" size="icon" className="fixed bottom-6 right-6 rounded-full h-14 w-14 shadow-lg" aria-label="Open chat">
           <MessageSquare />
-          Ask FusionKart AI
+          <span className="sr-only">Open chat</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[600px]">

@@ -78,6 +78,7 @@ const Header = () => {
         </div>
 
         <nav className="hidden md:flex h-10 items-center gap-6 border-t text-sm text-muted-foreground">
+          <Link to="/" className="story-link">Home</Link>
           <Link to="/search?q=deals" className="story-link">Top Deals</Link>
           <Link to="/search?q=new" className="story-link">New Arrivals</Link>
           <Link to="/search?q=best" className="story-link">Best Sellers</Link>
