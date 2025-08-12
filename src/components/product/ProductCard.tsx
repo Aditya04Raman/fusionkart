@@ -16,7 +16,7 @@ export const ProductCard = ({ id, name, price, rating, reviews, badge }: Props) 
   return (
     <article className="group rounded-lg border bg-card p-4 shadow-sm hover:shadow-md transition-shadow">
       <Link to={`/product/${id}`} className="block">
-        <div className="relative mb-3 aspect-[4/3] w-full overflow-hidden rounded-md bg-[var(--gradient-surface)]">
+        <div className="relative mb-3 aspect-[4/3] w-full overflow-hidden rounded-md bg-gradient-surface">
           <img
             src={productImageUrl(id, 'md')}
             alt={`${name} product image`}

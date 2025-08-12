@@ -30,7 +30,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2 hover-scale" aria-label="FusionKart AI Home">
-            <div className="h-9 w-9 rounded-md bg-[var(--gradient-primary)]" />
+            <div className="h-9 w-9 rounded-md bg-gradient-primary" />
             <span className="font-brand text-lg font-semibold">FusionKart <span className="text-accent">AI</span></span>
           </Link>
 

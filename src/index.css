@@ -143,4 +143,8 @@
   .interactive-spotlight {
     background: radial-gradient(600px circle at var(--x,50%) var(--y,50%), hsl(var(--primary) / 0.12), transparent 40%);
   }
+
+  /* Gradient helpers to avoid invalid bg-color with gradients */
+  .bg-gradient-primary { background-image: var(--gradient-primary); }
+  .bg-gradient-surface { background-image: var(--gradient-surface); }
 }

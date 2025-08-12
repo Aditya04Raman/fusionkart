@@ -10,7 +10,7 @@ const Footer = () => (
       <div className="grid gap-8 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-2">
-            <div className="h-9 w-9 rounded-md bg-[var(--gradient-primary)]" aria-hidden />
+            <div className="h-9 w-9 rounded-md bg-gradient-primary" aria-hidden />
             <span className="font-brand text-lg font-semibold">FusionKart <span className="text-accent">AI</span></span>
           </div>
           <p className="mt-3 text-sm text-muted-foreground">Shop smarter with powerful search, bold design, and an AI shopping assistant.</p>

@@ -24,7 +24,7 @@ const FlashSaleBanner = () => {
 
   return (
     <section className="container mx-auto px-4">
-      <div className="rounded-lg border bg-[var(--gradient-surface)] p-4 md:p-6 flex items-center justify-between shadow-md">
+      <div className="rounded-lg border bg-gradient-surface p-4 md:p-6 flex items-center justify-between shadow-md">
         <div className="flex items-center gap-3">
           <div className="rounded-md bg-accent/15 p-2 text-accent"><Zap /></div>
           <div>
